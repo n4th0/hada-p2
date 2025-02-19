@@ -4,12 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace hada_p2
+namespace Hada
 {
     internal class Program
     {
         static void Main(string[] args)
         {
+            Coordenada c = new Coordenada { Fila = 4, Columna = 10};
+
+            Console.WriteLine("Fila: " + c.Fila);  
+            Console.WriteLine("Columna: " + c.Columna);
+
         }
     }
 }
