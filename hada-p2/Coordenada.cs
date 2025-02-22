@@ -42,7 +42,7 @@ namespace Hada
 
         public bool Equals(Coordenada other) { return this.Columna == other.Columna && this.Fila == other.Fila; }
 
-        public bool Equals(Object obj)
+        public override bool Equals(Object obj)
         {
             if (obj == null) { return false; }
             if (obj.GetType() != this.GetType()) { return false; }
