@@ -33,9 +33,9 @@ namespace Hada
             this.Fila = cord.Fila;
             this.Columna = cord.Columna;
         }
-        public string toString() { return "(" + Fila + "," + Columna + ")"; }
+        public override string ToString() { return "(" + Fila + "," + Columna + ")"; }
 
-        public int GetHashCode()
+        public override int GetHashCode()
         {
             return this.Fila.GetHashCode() ^ this.Columna.GetHashCode();
         }

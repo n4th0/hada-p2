@@ -8,7 +8,7 @@ namespace Hada
 {
     internal class Tablero
     {
-        int TabTablero { get; private set; }
+        public int TabTablero { get; private set; }
 
         private List<Coordenada> coordenadasDisparadas;
         private List<Coordenada> coordenadasTocadas;
@@ -25,6 +25,8 @@ namespace Hada
             }
             TabTablero = tamTablero;
 
+            // TODO debería comprobar que los barcos no se solapan
+            // TODO debería comprobar que los barcos no se salgan del tablero
             this.barcos = barcos; // shallow copy 
             coordenadasDisparadas = new List<Coordenada>();
             coordenadasTocadas = new List<Coordenada>();
@@ -47,7 +49,8 @@ namespace Hada
             }
             foreach (Barco b in barcos)
             {
-                Dictionary<Coordenada, string> casillasBarco = b.getCoordenadasBarco();
+                // IReadOnlyDictionary<Coordenada, string> casillasBarco = b.CoordenadasBarco;
+                Dictionary<Coordenada, string> casillasBarco = b.coordenadas;
                 casillasBarco.Keys.ToList().ForEach(k => casillasTablero[k] = casillasBarco[k]);
             }
         }
@@ -76,15 +79,19 @@ namespace Hada
 
         public string DibujarTablero()
         {
+            int contador = 0;
             string tablero = "";
-            for (int i = 0; i < TabTablero; i++)
+            foreach (Coordenada item in casillasTablero.Keys.ToList())
             {
-                for (int j = 0; j < TabTablero; j++)
+                if(contador < item.Fila)
                 {
-                    tablero += "["+casillasTablero[new Coordenada(i, j)]+"]";
+                    tablero += "\n";
+                    contador++;
                 }
-                tablero += "\n";
+
+                tablero += "["+casillasTablero[item]+"]";
             }
+
             return tablero;
         }
 

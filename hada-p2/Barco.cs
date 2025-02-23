@@ -9,8 +9,8 @@ namespace Hada
 {
     internal class Barco
     {
-        private Dictionary<Coordenada, string> coordenadas;
-        public IReadOnlyDictionary<Coordenada, string> CoordenadasBarco { get; private set; }
+        public Dictionary<Coordenada, string> coordenadas { get; private set; }
+        // public IReadOnlyDictionary<Coordenada, string> CoordenadasBarco { get; private set; }
 
 
         public string Nombre { get; private set; }
@@ -29,7 +29,7 @@ namespace Hada
                 throw new ArgumentException("El barco no puede tener una longitud inferior a 1");
             }
 
-            if (orientacion != 'v' || orientacion != 'h')
+            if (orientacion != 'v' && orientacion != 'h')
             {
                 throw new ArgumentException("El barco tiene que estar orientado de forma horizontal (h) o vertical(v)");
             }
@@ -61,7 +61,7 @@ namespace Hada
         }
         public void Disparo(Coordenada c)
         {
-            if (CoordenadasBarco.ContainsKey(c))
+            if (coordenadas.ContainsKey(c))
             {
                 string tag = coordenadas[c];
                 if (!coordenadas[c].EndsWith("_T"))
@@ -95,9 +95,9 @@ namespace Hada
         public override string ToString()
         {
             string result = $"Barco: {Nombre}\nDaños: {Daños}\nHundido: {(hundido() ? "Sí" : "No")}\nCoordenadas:\n";
-            foreach (var coord in CoordenadasBarco)
+            foreach (var coord in coordenadas)
             {
-                result += $"{coord.Key.toString()} - {coord.Value}\n";
+                result += $"{coord.Key.ToString()} - {coord.Value}\n";
             }
             return result;
         }
