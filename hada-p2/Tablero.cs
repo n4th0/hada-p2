@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -56,8 +57,8 @@ namespace Hada
         }
 
         public void Disparar(Coordenada c) { 
-            if(c.Columna < 0 || c.Columna > TabTablero || c.Fila < 0 || c.Fila > TabTablero) { 
-                Console.WriteLine("The coordinate "+ c.ToString() + "is outside the dimensions of the board");
+            if(c.Columna < 0 || c.Columna >= TabTablero || c.Fila < 0 || c.Fila >= TabTablero) { 
+                Console.WriteLine("The coordinate "+ c.ToString() + " is outside the dimensions of the board");
             }
             else
             {
@@ -72,7 +73,6 @@ namespace Hada
                 {
                     coordenadasTocadas.Add(c);
                 }
-
             }
         }
 
@@ -113,7 +113,7 @@ namespace Hada
             {
                 output += c.ToString() + " ";
             }
-            output  += "\n\n\nCASILLAS TABLERO\n-------";
+            output  += "\n\n\nCASILLAS TABLERO\n-------\n";
             output += this.DibujarTablero();
             output += "\n";
             return output;

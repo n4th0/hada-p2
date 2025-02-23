@@ -9,7 +9,7 @@ namespace Hada
 {
     internal class Barco
     {
-        private Dictionary<Coordenada, string> coordenadas;
+        public Dictionary<Coordenada, string> coordenadas { get; private set; }
 
         public string Nombre { get; private set; }
         public int NumDanyos { get; private set; }
@@ -87,10 +87,10 @@ namespace Hada
             {
                 if (!tag.EndsWith("_T"))
                 {
-                    return false;
+                    return true;
                 }
             }
-            return true;
+            return false;
         }
 
         public override string ToString()

@@ -9,8 +9,8 @@ namespace Hada
 {
     internal class Coordenada
     {
-        public int Fila { get; set; } // should have the resposability of (0-9)
-        public int Columna { get; set; }
+        public int Fila { get; private set; }
+        public int Columna { get; private set; }
         public Coordenada()
         {
             Fila = 0;
