@@ -11,7 +11,7 @@ namespace Hada
         static void Main(string[] args)
         {
 
-            Game g = new Game();
+             Game g = new Game();
 
         }
     }

@@ -9,22 +9,43 @@ namespace Hada
 {
     internal class Coordenada
     {
-        public int Fila { get; private set; }
-        public int Columna { get; private set; }
+        private int _Fila;
+        public int Fila
+        {
+
+            get { return _Fila; }
+            set {
+                if (value < 0 || value > 9) { throw new ArgumentException("ERROR: range of the coordinate that has been introduce is not adecuate"); }
+                _Fila = value; 
+            }
+        }
+        private int _Columna;
+        public int Columna
+        {
+
+            get { return _Columna; }
+            set
+            {
+                if (value < 0 || value > 9) { throw new ArgumentException("ERROR: range of the coordinate that has been introduce is not adecuate"); }
+                _Columna = value;
+            }
+        }
+
+        // public int Fila { get; private set; }
+        //public int Columna { get; private set; }
         public Coordenada()
         {
-            Fila = 0;
-            Columna = 0;
+            _Fila = 0;
+            _Columna = 0;
         }
         public Coordenada(int Fila, int Columna)
         {
-            if (Columna < 0 || Columna > 9 || Fila < 0 || Fila > 9) { throw new ArgumentException(); }
             this.Fila = Fila;
             this.Columna = Columna;
         }
         public Coordenada(string Fila, string Columna)
         {
-            if (Int32.Parse(Columna) < 0 || Int32.Parse(Columna) > 9 || Int32.Parse(Fila) < 0 || Int32.Parse(Fila) > 9) { throw new ArgumentException(); }
+            // if (Int32.Parse(Columna) < 0 || Int32.Parse(Columna) > 9 || Int32.Parse(Fila) < 0 || Int32.Parse(Fila) > 9) { throw new ArgumentException(); }
             this.Fila = Int32.Parse(Fila);
             this.Columna = Int32.Parse(Columna);
         }

@@ -10,6 +10,8 @@ namespace Hada
     internal class Barco
     {
         public Dictionary<Coordenada, string> coordenadas { get; private set; }
+        public event EventHandler<TocadoArgs> eventoTocado;
+        public event EventHandler<HundidoArgs> eventoHundido;
 
         public string Nombre { get; private set; }
         public int NumDanyos { get; private set; }
@@ -63,20 +65,22 @@ namespace Hada
         {
             if (coordenadas.ContainsKey(c))
             {
-                string tag = coordenadas[c];
                 if (!coordenadas[c].EndsWith("_T"))
                 {
                     coordenadas[c] = coordenadas[c] + "_T";
                     NumDanyos++;
 
                     // Lanzar evento Tocado
+                    this.eventoTocado(this, new TocadoArgs(this.Nombre, c));
+                    // Console.WriteLine("llego aqui");
 
-
-                    /* Verificar si el barco está hundido
+                    
                     if (hundido())
                     {
+                        this.eventoHundido(this, new HundidoArgs(this.Nombre));
+                        // Console.WriteLine("llego aqui2");
                   
-                    }*/
+                    }
                 }
             }
         }
@@ -87,16 +91,16 @@ namespace Hada
             {
                 if (!tag.EndsWith("_T"))
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+            return true;
         }
 
         public override string ToString()
         {
 
-            string result = "[" + Nombre + "]" + " - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + (hundido() ? "False" : "True") + "] - COORDENADAS: ";
+            string result = "[" + Nombre + "]" + " - DAÑOS: [" + NumDanyos + "] - HUNDIDO: [" + (hundido() ? "True" : "False") + "] - COORDENADAS: ";
 
             foreach (var coord in coordenadas)
             {
@@ -106,8 +110,7 @@ namespace Hada
 
             return result;
         }
-        //public evento EventHandler<TocadoArgs> eventoTocado;
-        //public evento EventHandler<HundidoArgs> eventoHundido;
+        
 
     }
 }

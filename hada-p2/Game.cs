@@ -13,7 +13,7 @@ namespace Hada
         private bool finPartida;
 
         public Game()
-        {
+        { 
             finPartida = true;
             this.gameLoop();
         }
@@ -24,10 +24,12 @@ namespace Hada
             b.Add(new Barco("THOR", 1, 'h', new Coordenada(0, 0)));
             b.Add(new Barco("LOKI", 2, 'v', new Coordenada(1, 2)));
             b.Add(new Barco("MAYA", 3, 'h', new Coordenada(3, 1)));
+           
 
             // Console.WriteLine(b[1].ToString());
 
             Tablero t = new Tablero(4, b);
+            t.eventoFinPartida += cuandoEventoFinPartida;
             string input = "";
 
             while (finPartida)
@@ -40,9 +42,9 @@ namespace Hada
                     input = Console.ReadLine();
 
 
-                    if (input == "S" || input == "s") // TODO comprobar que los barcos no estén hundidos
+                    if (input == "S" || input == "s") 
                     {
-                        finPartida = false;
+                        this.cuandoEventoFinPartida(this, new EventArgs()); 
                         correctInput = true;
                     }
                     else
@@ -52,7 +54,11 @@ namespace Hada
                         {
                             Coordenada c = new Coordenada(Int32.Parse(coordenadas[0]), Int32.Parse(coordenadas[1]));
                             t.Disparar(c);
-                            Console.WriteLine(t.ToString());
+                            if (finPartida)
+                            {
+                                Console.WriteLine(t.ToString());
+
+                            }
                             correctInput = true;
                         }
                         catch (Exception ex)
@@ -69,7 +75,11 @@ namespace Hada
             }
            
         }
+        void cuandoEventoFinPartida(object obj, EventArgs e)
+        {
+            Console.WriteLine("GAME ENDED!!!!");
+            finPartida = false;
+        }
 
-        // TODO implement Eventos
     }
 }
