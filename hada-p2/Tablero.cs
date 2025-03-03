@@ -141,7 +141,7 @@ namespace Hada
         public void cuandoEventoTocado(object obj, TocadoArgs e)
         {
             Barco b = (Barco)obj;
-            string s = "TABLERO: Barco [" + e.name + "] tocado en Coordenada: [" + e.coordenadaImapcato.ToString() + "]";
+            string s = "TABLERO: Barco [" + e.name + "] tocado en Coordenada: [" + e.coordenadaImpacato.ToString() + "]";
             if(b.hundido() && !barcosEliminados.Contains(b)) { barcosEliminados.Add(b); 
             
             }

@@ -9,11 +9,11 @@ namespace Hada
     internal class TocadoArgs : EventArgs
     {
         public string name;
-        public Coordenada coordenadaImapcato;
+        public Coordenada coordenadaImpacato;
         public TocadoArgs(string name, Coordenada coordenadaImpacto)
         {
             this.name = name;
-            this.coordenadaImapcato = coordenadaImpacto;
+            this.coordenadaImpacato = coordenadaImpacto;
         }
     }
     internal class HundidoArgs : EventArgs
