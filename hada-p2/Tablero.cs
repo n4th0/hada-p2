@@ -169,9 +169,9 @@ namespace Hada
             {
                 output += c.ToString() + " ";
             }
-            output += "\n\n\nCASILLAS TABLERO\n-------\n";
+            output += "\n\n\n\nCASILLAS TABLERO\n-------\n";
             output += this.DibujarTablero();
-            output += "\n";
+            output += "\n\n";
             return output;
         }
 
@@ -183,9 +183,8 @@ namespace Hada
         public void cuandoEventoTocado(object obj, TocadoArgs e)
         {
             Barco b = (Barco)obj;
-            string s = "TABLERO: Barco [" + e.name + "] tocado en Coordenada: [" + e.coordenadaImapcato.ToString() + "]";
-            if (b.hundido() && !barcosEliminados.Contains(b))
-            {
+            string s = "TABLERO: Barco [" + e.name + "] tocado en Coordenada: [" + e.coordenadaImpacato.ToString() + "]";
+            if(b.hundido() && !barcosEliminados.Contains(b)) {
                 barcosEliminados.Add(b);
             }
             Console.WriteLine(s);

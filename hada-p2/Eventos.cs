@@ -15,6 +15,7 @@ namespace Hada
         /// The name of the object that was hit.
         /// </summary>
         public string name;
+        public Coordenada coordenadaImpacato;
 
         /// <summary>
         /// The coordinates of the impact.
@@ -29,7 +30,7 @@ namespace Hada
         public TocadoArgs(string name, Coordenada coordenadaImpacto)
         {
             this.name = name;
-            this.coordenadaImapcato = coordenadaImpacto;
+            this.coordenadaImpacato = coordenadaImpacto;
         }
     }
 

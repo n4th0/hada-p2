@@ -111,14 +111,10 @@ namespace Hada
 
                     // Lanzar evento Tocado
                     this.eventoTocado(this, new TocadoArgs(this.Nombre, c));
-                    // Console.WriteLine("llego aqui");
-
 
                     if (hundido())
                     {
                         this.eventoHundido(this, new HundidoArgs(this.Nombre));
-                        // Console.WriteLine("llego aqui2");
-
                     }
                 }
             }
@@ -152,7 +148,6 @@ namespace Hada
             foreach (var coord in coordenadas)
             {
                 result += "[" + coord.ToString() + " :" + Nombre + "] ";
-
             }
 
             return result;
